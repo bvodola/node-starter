@@ -8,18 +8,7 @@ const sequelize = new Sequelize(DATABASE_URL)
   try {
     await sequelize.authenticate()
     console.log('-- Connection has been established successfully. --')
-
-    sequelize.addModels([
-      models.Address,
-      models.Client,
-      models.Contact,
-      models.Insurance,
-      models.Lab,
-      models.Partner,
-      models.Refund,
-      models.User,
-      models.LabPartner,
-    ])
+    sequelize.addModels([models.User])
 
     await sequelize.sync({ force: false })
     console.log('-- Database synced --')

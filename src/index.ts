@@ -9,11 +9,8 @@ import crud from './crud'
 import { authMiddleware } from './auth/tokens'
 
 const app = express()
-const port = process.env.PORT
+const port = process.env.PORT || 3003
 const userRoutes = crud('User')
-const refundRoutes = crud('Refund')
-const insuranceRoutes = crud('Insurance')
-const clientRoutes = crud('Client')
 
 // ====
 // CORS
@@ -48,9 +45,6 @@ app.use('/auth', require('./auth/routes')(passport))
 // API Routes
 // ==========
 app.use('/users', authMiddleware(), userRoutes)
-app.use('/clients', authMiddleware(), clientRoutes)
-app.use('/refunds', authMiddleware(), refundRoutes)
-app.use('/insurances', authMiddleware(), insuranceRoutes)
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at https://localhost:${port}`)

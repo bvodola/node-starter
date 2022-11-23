@@ -1,10 +1,7 @@
 import express, { Router } from 'express'
 import { models } from './database'
 
-export default function crudGenerator(
-  collectionName: 'User' | 'Refund' | 'Insurance' | 'Client',
-  router?: Router,
-) {
+export default function crudGenerator(collectionName: 'User', router?: Router) {
   // ======
   // Config
   // ======
